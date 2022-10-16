@@ -1,4 +1,5 @@
 kedro==0.18.3
+kedro-viz==5.1.1
 dvc==2.30.0
 dvc-data==0.17.1
 dvc-http==2.27.2
