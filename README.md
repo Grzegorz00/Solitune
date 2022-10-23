@@ -15,7 +15,7 @@ pip install -r /path/to/requirements.txt
 ## Team
 Bagniuk Karol       Data Scientist\
 Misior Dominik      ML Engineer\
-Ołdakowski Maciej   Project manager
+Ołdakowski Maciej   Project manager\
 Stasiak Zuzanna     ML Engineer\
 Święcicki Grzegorz  Coder and System Architect\
 Sadownik Michał     Coder and Data Scientist
