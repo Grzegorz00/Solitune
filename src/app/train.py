@@ -88,10 +88,8 @@ def train(dataset):
     
     return classifier
 
-# Read customers_labeled dataset
-
-df = pd.read_csv('src/app/test.csv') #data/03_prepared/data.csv
-
+# Load data 
+df = pd.read_csv('data/03_prepared/data.csv')
 data_prepared = prepare_data_for_modeling(df)
 # Train the model
 model = train(data_prepared)
