@@ -15,16 +15,8 @@ warnings.filterwarnings('ignore')
 
 
 def prepare_data_for_modeling(dataset):
-    '''Prepare data for modeling
-    
-    Inputs:
-    df: a pandas dataframe with customers data
-        
-    Outputs:
-    df: a pandas dataframe with customers data ready for modeling
-        X: a pandas dataframe with customer features
-        y: a pandas series with customer labels, encoded as integers (0 = low revenue, 1 = high revenue)
-
+    '''
+    Document prepare data function
     '''
 
     #Encoding categorical value
@@ -46,14 +38,8 @@ def prepare_data_for_modeling(dataset):
     return dataset
 
 def train(dataset):    
-    '''Train a model predicting high-revenue customers from features and labels
-    
-    Inputs:
-    df: a pandas dataframe with customers data
-        
-    Outputs:
-    model: a trained model
-    
+    '''
+    Document train function
     '''
     #transforming dataset to array
     x = dataset.iloc[:, :-1].values
