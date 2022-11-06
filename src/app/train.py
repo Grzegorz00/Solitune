@@ -7,14 +7,6 @@ from sklearn.metrics import classification_report
 from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
-for dirname, _, filenames in os.walk("/kaggle/input"):
-    for filename in filenames:
-        print(os.path.join(dirname, filename))
-import warnings
-
-warnings.filterwarnings("ignore")
-
-
 def prepare_data_for_modeling(dataset):
     """
     Document prepare data function
@@ -83,7 +75,7 @@ def train(dataset):
 
 
 # Load data
-df = pd.read_csv("data/03_prepared/data.csv")
+df = pd.read_csv("../../data/03_prepared/data.csv")
 data_prepared = prepare_data_for_modeling(df)
 # Train the model
 model = train(data_prepared)
