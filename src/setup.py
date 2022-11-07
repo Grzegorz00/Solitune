@@ -1,17 +1,39 @@
-import setuptools
+from setuptools import find_packages, setup
 
-with open("README.md") as buffer:
-    long_description = buffer.read()
+entry_point = (
+    "solitune = solitune.__main__:main"
+)
 
-setuptools.setup(
-    name="appTemp",
-    version="0.4.3",
-    author="Temp",
-    author_email="temp@pjwstk.edu.pl",
-    description="My app temp",
-    packages=setuptools.find_packages(),
-    install_requires=[
-        "pandas==1.4.2"
-    ],
-    python_requires=">=3.6",
+
+# get the dependencies and installs
+with open("requirements.txt", encoding="utf-8") as f:
+    # Make sure we strip all comments and options (e.g "--extra-index-url")
+    # that arise from a modified pip.conf file that configure global options
+    # when running kedro build-reqs
+    requires = []
+    for line in f:
+        req = line.split("#", 1)[0].strip()
+        if req and not req.startswith("--"):
+            requires.append(req)
+
+setup(
+    name="solitune",
+    version="0.1",
+    packages=find_packages(exclude=["tests"]),
+    entry_points={"console_scripts": [entry_point]},
+    install_requires=requires,
+    extras_require={
+        "docs": [
+            "docutils<0.18.0",
+            "sphinx~=3.4.3",
+            "sphinx_rtd_theme==0.5.1",
+            "nbsphinx==0.8.1",
+            "nbstripout~=0.4",
+            "sphinx-autodoc-typehints==1.11.1",
+            "sphinx_copybutton==0.3.1",
+            "ipykernel>=5.3, <7.0",
+            "Jinja2<3.1.0",
+            "myst-parser~=0.17.2",
+        ]
+    },
 )
