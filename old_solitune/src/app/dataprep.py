@@ -1,6 +1,7 @@
 from hashlib import new
 import pandas as pd
 import numpy as np
+import sklearn
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
 def prepare_data_for_modeling(dataset):
@@ -28,5 +29,5 @@ def prepare_data_for_modeling(dataset):
 
 
 # Load data
-df = pd.read_csv("../../data/01_raw/data.csv")
+df = pd.read_csv("../../data/01_raw/employee.csv")
 data_prepared = prepare_data_for_modeling(df)
