@@ -13,30 +13,44 @@ from kedro.pipeline import pipeline, node
 from kedro.runner import SequentialRunner
 from kedro.io import DataCatalog, MemoryDataSet
 
-def prepare_data_for_modeling(dataset):
+def encode_categorical_values(dataset):
+    """Encode categorical values: Education, Gender, Ever Benched
+    Input:    
+    dataset: a pandas dataframe with employee orders    
+    Output:    
+    employee_encoded: pandas dataframe with encoded categorical values 
     """
-    Document prepare data function
-    """
-
-    # Encoding categorical value
     le = LabelEncoder()
+    dataset=pd.DataFrame(dataset)
 
     dataset["Education"] = le.fit_transform(dataset["Education"])
     dataset["Gender"] = le.fit_transform(dataset["Gender"])
     dataset["EverBenched"] = le.fit_transform(dataset["EverBenched"])
 
-    dataset = pd.get_dummies(dataset, drop_first=False)
-
-    # Dataset Reordering
+    employee_encoded = pd.get_dummies(dataset, drop_first=False)
+    return employee_encoded
+    
+def reorder_dataset(dataset):
+    """Reorder dataset for better transparency
+    Input:    
+    dataset: a pandas dataframe with employee orders    
+    Output:    
+    employee_reordered: pandas dataframe reorded
+    """
     leave_or_not = dataset["LeaveOrNot"]
     dataset = dataset.drop("LeaveOrNot", axis=1)
     dataset.insert(loc=len(dataset.columns), column="LeaveOrNot", value=leave_or_not)
 
-    dataset = dataset.drop(["JoiningYear", "PaymentTier"], axis=1)
+    employee_reordered = dataset.drop(["JoiningYear", "PaymentTier"], axis=1)
 
-    return dataset
+    return employee_reordered
 
-def load_data():
-    # Load data
-    df = pd.read_csv("../../data/01_raw/employee.csv")
-    return prepare_data_for_modeling(df)
+def load_data(employee):
+    """Load raw data for modeling
+    Input:    
+    employee: a raw csv with employees data    
+    Output:    
+    pandas_df: pandas dataframe of employee file
+    """
+    pandas_df = pd.read_csv(employee)
+    return pandas_df

@@ -10,12 +10,19 @@ Stasiak Zuzanna     ML Engineer\
 Święcicki Grzegorz  Coder and System Architect\
 Sadownik Michał     Coder and Data Scientist
 
+## Useful commends and links 
+
+[Data versioning](https://dvc.org/doc/start)
+To pull data from server: `dvc pull`
+[kedro documentation](https://kedro.readthedocs.io)
+[Anaconda](https://anaconda.org/)
+To install package: `conda install --file requirements.txt -n some-environment`
+or: `pip install -r requirements.txt`
+[Git commends](https://docs.github.com/en/get-started/using-git/about-git)
 
 ## Overview
 
 This is your new Kedro project, which was generated using `Kedro 0.18.3`.
-
-Take a look at the [Kedro documentation](https://kedro.readthedocs.io) to get started.
 
 ## Rules and guidelines
 
