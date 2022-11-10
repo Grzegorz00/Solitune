@@ -2,3 +2,13 @@
 #
 # Documentation for this file format can be found in "The Data Catalog"
 # Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
+employee:  
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/employee.csv  
+  layer: raw
+
+
+employee_prepared:
+  type: pandas.ParquetDataSet
+  filepath: data/02_intermediate/employee_prepared.pq
+  layer: intermediate
