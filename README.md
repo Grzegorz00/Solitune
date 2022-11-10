@@ -14,10 +14,14 @@ Sadownik Michał     Coder and Data Scientist
 
 [Data versioning](https://dvc.org/doc/start)
 To pull data from server: `dvc pull`
+
 [kedro documentation](https://kedro.readthedocs.io)
+
 [Anaconda](https://anaconda.org/)
+
 To install package: `conda install --file requirements.txt -n some-environment`
 or: `pip install -r requirements.txt`
+
 [Git commends](https://docs.github.com/en/get-started/using-git/about-git)
 
 ## Overview
