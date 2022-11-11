@@ -3,17 +3,16 @@ This app will predict employee future based on "Employee" dataset.
 Example implementation can be found here: 
 https://www.kaggle.com/datasets/tejashvi14/employee-future-prediction
 ## Team
-Bagniuk Karol       Data Scientist\
-Misior Dominik      ML Engineer\
-Ołdakowski Maciej   Project manager\
-Stasiak Zuzanna     ML Engineer\
-Święcicki Grzegorz  Coder and System Architect\
-Sadownik Michał     Coder and Data Scientist
+***Bagniuk Karol*** - Data Scientist\
+***Misior Dominik*** - ML Engineer\
+***Ołdakowski Maciej*** - Project manager\
+***Stasiak Zuzanna*** - ML Engineer\
+***Święcicki Grzegorz*** - Coder and System Architect\
+***Sadownik Michał*** - Coder and Data Scientist
 
 ## Useful commends and links 
 
 [Data versioning](https://dvc.org/doc/start)
-To pull data from server: `dvc pull`
 
 [kedro documentation](https://kedro.readthedocs.io)
 
@@ -23,6 +22,34 @@ To install package: `conda install --file requirements.txt -n some-environment`
 or: `pip install -r requirements.txt`
 
 [Git commends](https://docs.github.com/en/get-started/using-git/about-git)
+
+## How to use DVC
+
+Adding and commiting changes:
+```
+dvc add data/01_raw/employee.csv 
+git commit data/01_raw/employee.csv.dvc -m "<message>"
+```
+
+Pushing changes:
+```
+dvc push
+git push
+```
+
+To get status of the dataset:
+```
+dvc status
+git status
+```
+
+To pull data from server:
+```
+git pull
+dvc pull
+```
+
+[DVC user guide](https://dvc.org/doc/user-guide/how-to/update-tracked-data)
 
 ## Overview
 
