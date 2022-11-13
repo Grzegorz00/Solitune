@@ -12,3 +12,8 @@ employee_prepared:
   type: pandas.ParquetDataSet
   filepath: data/02_intermediate/employee_prepared.pq
   layer: intermediate
+
+model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/model.pickle
+  versioned: true
