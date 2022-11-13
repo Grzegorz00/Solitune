@@ -11,5 +11,4 @@ def create_pipeline(**kwargs) -> Pipeline:
     return pipeline([
         node(func=encode_categorical_values, inputs="employee", outputs="employee_encoded"),
         node(func=reorder_dataset, inputs="employee_encoded", outputs="employee_prepared"),
-        
     ])
