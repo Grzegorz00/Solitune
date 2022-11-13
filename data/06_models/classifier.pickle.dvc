@@ -1,0 +1,5 @@
+outs:
+- md5: 7573ccee9ca5488985ad7a6da470ceac.dir
+  size: 5960144
+  nfiles: 1
+  path: classifier.pickle
