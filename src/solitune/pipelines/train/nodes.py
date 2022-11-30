@@ -3,14 +3,13 @@ This is a boilerplate pipeline 'train'
 generated using Kedro 0.18.3
 """
 import os
-
+import optuna
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_score, train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
-
 from sklearn.preprocessing import MinMaxScaler
 
 import joblib
@@ -85,8 +84,17 @@ def train_model(X_train, y_train):
     '''
     # Suppress "a copy of slice from a DataFrame is being made" warning
     pd.options.mode.chained_assignment = None
-
-    model = RandomForestClassifier(n_estimators=100, criterion="entropy", random_state=27)
+    
+    def objective(trial):
+        n_estimators = trial.suggest_int('n_estimators', 2, 50)
+        max_depth = int(trial.suggest_loguniform('max_depth', 1, 20))
+        model = RandomForestClassifier(n_estimators=n_estimators, max_depth=max_depth)
+        return cross_val_score(model, X_train, y_train,
+           n_jobs=-1, cv=5).mean()
+    
+    study = optuna.create_study(direction='maximize')
+    study.optimize(objective, n_trials=100)
+    model = RandomForestClassifier(**study.best_params)
 
     model.fit(X_train, y_train)
 
