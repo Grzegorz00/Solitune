@@ -20,3 +20,4 @@ kedro[pandas.CSVDataSet, pandas.ExcelDataSet,pandas.ParquetDataSet]==0.18.3   # 
 optuna==3.0.3
 wandb==0.13.5
 pycaret==2.3.10
+

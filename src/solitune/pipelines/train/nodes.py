@@ -85,7 +85,7 @@ def train_model(X_train, y_train):
     '''
     # Suppress "a copy of slice from a DataFrame is being made" warning
     pd.options.mode.chained_assignment = None
-    
+
     def objective(trial):
         n_estimators = trial.suggest_int('n_estimators', 2, 50)
         max_depth = int(trial.suggest_loguniform('max_depth', 1, 20))
@@ -96,6 +96,7 @@ def train_model(X_train, y_train):
     study = optuna.create_study(direction='maximize')
     study.optimize(objective, n_trials=100)
     model = RandomForestClassifier(**study.best_params)
+
 
     model.fit(X_train, y_train)
 
@@ -136,4 +137,4 @@ def evaluate_model(model, X_test, y_test):
     # log tables
     table=wandb.Table(data=X_test, columns=X_test.columns)
     wandb.log({"X_test": table})
-    
+
