@@ -6,6 +6,7 @@ import os
 import optuna
 import numpy as np
 import pandas as pd
+import wandb
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import cross_val_score, train_test_split
@@ -123,3 +124,16 @@ def evaluate_model(model, X_test, y_test):
     #printout the results
     logger = logging.getLogger(__name__)
     logger.info("Model has an accuracy of %.3f on test data.", accuracy)
+    
+    # Initiate wandb project
+    wandb.init(project="DKU-HighRev-4")
+    # log metrics
+    wandb.log({"accuracy": accuracy})
+    n_trees=model.n_estimators
+    print('n_trees: ', n_trees)
+    wandb.log({"roc_auc": roc_auc})
+    wandb.log({"n_trees": n_trees})
+    # log tables
+    table=wandb.Table(data=X_test, columns=X_test.columns)
+    wandb.log({"X_test": table})
+    
