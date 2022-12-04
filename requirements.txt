@@ -18,3 +18,4 @@ plotly==5.11.0
 matplotlib==3.6.2
 kedro[pandas.CSVDataSet, pandas.ExcelDataSet,pandas.ParquetDataSet]==0.18.3   # Specify optional Kedro dependencies
 optuna
+pycaret==2.3.10
