@@ -1,0 +1,4 @@
+[core]
+    remote = employee-remote
+['remote "employee-remote"']
+    url = gdrive://1sXSIONE5WGk3LPkzVyG44Lv6HxbqqkPA
