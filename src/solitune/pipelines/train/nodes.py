@@ -126,7 +126,7 @@ def evaluate_model(model, X_test, y_test):
     logger.info("Model has an accuracy of %.3f on test data.", accuracy)
     
     # Initiate wandb project
-    wandb.init(project="DKU-HighRev-4")
+    wandb.init(project="Solitune")
     # log metrics
     wandb.log({"accuracy": accuracy})
     n_trees=model.n_estimators
