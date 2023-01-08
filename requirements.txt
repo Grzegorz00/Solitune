@@ -1,5 +1,6 @@
 kedro==0.18.3
 kedro-viz==5.1.1 # Visualise your pipelines
+kedro-docker==0.3.1
 dvc==2.30.0 # Data versioning
 dvc-data==0.17.1
 dvc-gdrive==2.19.0
