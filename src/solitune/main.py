@@ -1,14 +1,17 @@
 from kedro.framework.session import KedroSession
 from pathlib import Path
 from typing import Any, Iterable
+from kedro.pipeline import Pipeline
 from fastapi import Depends, FastAPI
 from kedro.framework.context import KedroContext
 from kedro.framework.session import KedroSession
 from kedro.framework.startup import bootstrap_project
-from kedro.pipeline import Pipeline
-from src.solitune.pipelines.data_preparation import create_pipeline
+from solitune.dependencies.dependencies import encode_categorical_pipeline
+from solitune.routers import data_processing
+
 
 app = FastAPI()
+app.include_router(data_processing.router, prefix="/data_processing")
 
 def get_session() -> Iterable[KedroSession]:
     bootstrap_project(Path().cwd())
@@ -20,11 +23,8 @@ def get_context(session: KedroSession = Depends(get_session)) -> Iterable[KedroC
     session.load_context = lambda: context
     yield context
 
-def create_variance_pipeline() -> Iterable[Pipeline]:
-    yield create_pipeline()
-
 @app.get("/")
-def main(pipeline: Pipeline = Depends(create_variance_pipeline)) -> dict[str, str]:
+def main(pipeline: Pipeline = Depends(encode_categorical_pipeline)) -> dict[str, str]:
     print(pipeline)
     return {"message": "Hello World!"}
 
