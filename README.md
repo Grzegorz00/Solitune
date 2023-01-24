@@ -18,10 +18,11 @@ https://www.kaggle.com/datasets/tejashvi14/employee-future-prediction
 
 [Anaconda](https://anaconda.org/)
 
-To install package: `conda install --file requirements.txt -n some-environment`
-or: `pip install -r requirements.txt`
-
 [Git commends](https://docs.github.com/en/get-started/using-git/about-git)
+
+[Docker](https://docs.docker.com/get-started/overview/)
+
+[FastAPI](https://fastapi.tiangolo.com/)
 
 ## How to use DVC
 
@@ -53,26 +54,12 @@ dvc pull
 
 ## Overview
 
-This is your new Kedro project, which was generated using `Kedro 0.18.3`.
-
-## Rules and guidelines
-
-In order to get the best out of the template:
-
-* Don't remove any lines from the `.gitignore` file we provide
-* Make sure your results can be reproduced by following a [data engineering convention](https://kedro.readthedocs.io/en/stable/faq/faq.html#what-is-data-engineering-convention)
-* Don't commit data to your repository
-* Don't commit any credentials or your local configuration to your repository. Keep all your credentials and local configuration in `conf/local/`
+This is a employee future prediction project based on "Employee" dataset. It was generated using Kedro, Docker and RestAPI. All the information about the data you can find in JupyterNotebook file in notebooks directory.
 
 ## How to install dependencies
 
-Declare any dependencies in `src/requirements.txt` for `pip` installation and `src/environment.yml` for `conda` installation.
-
-To install them, run:
-
-```
-pip install -r src/requirements.txt
-```
+To install packages run: `conda install --file requirements.txt -n name-of-environment`
+or: `pip install -r requirements.txt`
 
 ## How to run your Kedro pipeline
 
@@ -81,16 +68,23 @@ You can run your Kedro project with:
 ```
 kedro run
 ```
-
-## How to test your Kedro project
-
-Have a look at the file `src/tests/test_run.py` for instructions on how to write your tests. You can run your tests as follows:
-
+All piplines are in src/solitune/pipelines/ directory.
+There are three ready piplines:
+- data_preparation
+- train
+- train_pycaret
+To run specific pipline, or choosen nodes use:
 ```
-kedro test
+kedro run --pipeline pipline_name
+kedro run --node node_name,node_name_2
 ```
 
-To configure the coverage threshold, go to the `.coveragerc` file.
+You can also see a project using:
+```
+kedro viz
+```
+This command automatically opens a browser tab to serve the visualisation at http://127.0.0.1:4141/.
+
 
 ## Project dependencies
 
@@ -104,67 +98,17 @@ This will `pip-compile` the contents of `src/requirements.txt` into a new file `
 
 After this, if you'd like to update your project requirements, please update `src/requirements.txt` and re-run `kedro build-reqs`.
 
-[Further information about project dependencies](https://kedro.readthedocs.io/en/stable/kedro_project_setup/dependencies.html#project-specific-dependencies)
+## WandadB, Optuna, Pycaret
+This project used WandadB for experiment tracking.
 
-## How to work with Kedro and notebooks
 
-> Note: Using `kedro jupyter` or `kedro ipython` to run your notebook provides these variables in scope: `context`, `catalog`, and `startup_error`.
->
-> Jupyter, JupyterLab, and IPython are already included in the project requirements by default, so once you have run `pip install -r src/requirements.txt` you will not need to take any extra steps before you use them.
+## Docker
 
-### Jupyter
-To use Jupyter notebooks in your Kedro project, you need to install Jupyter:
 
-```
-pip install jupyter
-```
+## FastAPI and Uvicorn
 
-After installing Jupyter, you can start a local notebook server:
 
-```
-kedro jupyter notebook
-```
 
-### JupyterLab
-To use JupyterLab, you need to install it:
-
-```
-pip install jupyterlab
-```
-
-You can also start JupyterLab:
-
-```
-kedro jupyter lab
-```
-
-### IPython
-And if you want to run an IPython session:
-
-```
-kedro ipython
-```
-
-### How to convert notebook cells to nodes in a Kedro project
-You can move notebook code over into a Kedro project structure using a mixture of [cell tagging](https://jupyter-notebook.readthedocs.io/en/stable/changelog.html#release-5-0-0) and Kedro CLI commands.
-
-By adding the `node` tag to a cell and running the command below, the cell's source code will be copied over to a Python file within `src/<package_name>/nodes/`:
-
-```
-kedro jupyter convert <filepath_to_my_notebook>
-```
-> *Note:* The name of the Python file matches the name of the original notebook.
-
-Alternatively, you may want to transform all your notebooks in one go. Run the following command to convert all notebook files found in the project root directory and under any of its sub-folders:
-
-```
-kedro jupyter convert --all
-```
-
-### How to ignore notebook output cells in `git`
-To automatically strip out all output cell contents before committing to `git`, you can run `kedro activate-nbstripout`. This will add a hook in `.git/config` which will run `nbstripout` before anything is committed to `git`.
-
-> *Note:* Your output cells will be retained locally.
 
 ## Package your Kedro project
 
