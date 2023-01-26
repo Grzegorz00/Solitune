@@ -84,6 +84,7 @@ You can also see a project structure using:
 kedro viz
 ```
 This command automatically opens a browser tab to serve the visualisation at http://127.0.0.1:4141/.
+
 All documentation conected to kedro pipelines can be accessed by:
 ```
 kedro build-docs --open
