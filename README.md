@@ -61,8 +61,8 @@ This is a employee future prediction project based on "Employee" dataset. It was
 To install packages run: `conda install --file requirements.txt -n name-of-environment`
 or: `pip install -r requirements.txt`
 
-## How to run your Kedro pipeline
-
+## Kedro
+Kedro is an open source Python workflow tool that allows you to create portable data science pipelines.
 You can run your Kedro project with:
 
 ```
@@ -99,15 +99,33 @@ This will `pip-compile` the contents of `src/requirements.txt` into a new file `
 After this, if you'd like to update your project requirements, please update `src/requirements.txt` and re-run `kedro build-reqs`.
 
 ## WandadB, Optuna, Pycaret
-This project used WandadB for experiment tracking.
-
+This project used WandadB for experiment tracking. It is easy to use and for anyone it allows to share results with colleagues and their future self.
+Optuna is an open source hyperparameter optimization framework to automate hyperparameter search.
+PyCaret is an open-source, low-code machine learning library in Python that automates machine learning workflows.
 
 ## Docker
-
+Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly.
+To run docker file type:
+```
+docker build -t solitune_doc
+```
+Then you can use `docker image` to check all docker images. To run image use:
+```
+docker run solitune_doc
+```
+Then you can call `docker ps -a` to all the running and exited containers. To access type:
+```
+docker exec -it solitune_doc bash
+```
+You can stop the container using: `docker stop solitune_doc` or kill it: `docker kill solitune_doc`
 
 ## FastAPI and Uvicorn
-
-
+FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints.
+To run type:
+```
+uvicorn main:app --reload
+```
+ Then you go and check an automatic interactive API documentation: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 
 ## Package your Kedro project
