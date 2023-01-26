@@ -126,7 +126,7 @@ You can stop the container using: `docker stop solitune_doc` or kill it: `docker
 FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints.
 To run type:
 ```
-uvicorn main:app --reload
+uvicorn scr/solitune/main:app --reload
 ```
  Then you go and check an automatic interactive API documentation: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
