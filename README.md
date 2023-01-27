@@ -109,12 +109,16 @@ This will `pip-compile` the contents of `src/requirements.txt` into a new file `
 After this, if you'd like to update your project requirements, please update `src/requirements.txt` and re-run `kedro build-reqs`.
 
 ## WandadB, Optuna, Pycaret
-This project used WandadB for experiment tracking. It is easy to use and for anyone it allows to share results with colleagues and their future self.
-Optuna is an open source hyperparameter optimization framework to automate hyperparameter search.
-PyCaret is an open-source, low-code machine learning library in Python that automates machine learning workflows.
+In this project, the Wandb, Optuna, and PyCaret libraries were used to optimize, evaluate, and deploy machine learning models.
+
+Wandb, or Weights and Biases, was used to track the performance of the models during training, as well as to store and visualize the results. This allowed the team to monitor the progress of the models in real-time and to quickly identify any issues or areas for improvement. Additionally, Wandb provides useful features such as hyperparameter tuning, and model comparison which can be useful in this project.
+
+Optuna was used to perform hyperparameter optimization on the models. This is a technique that involves automatically searching for the best values for the parameters of the model, such as the learning rate or number of neurons in a neural network, in order to improve its performance. Optuna uses a variety of optimization algorithms and techniques to explore the parameter space and identify the best combination of values for the specific problem.
+
+PyCaret was used to simplify the model selection and deployment process. PyCaret is a library that provides a high-level interface for several machine learning libraries, including scikit-learn, XGBoost, and LightGBM. It also provides a variety of useful features such as automated machine learning, model comparison and model interpretability. PyCaret allows the team to quickly test different models and select the best one for the task at hand, as well as to easily deploy the final model in a production environment.
 
 ## Docker
-Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly.
+Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. It allows the team to work on the project on diffrent machines without a need to constantly fixing the environment. It also allows easly to test the app with wirtual environments.
 To run docker file type:
 ```
 docker build -t solitune_doc
@@ -130,7 +134,7 @@ docker exec -it solitune_doc bash
 You can stop the container using: `docker stop solitune_doc` or kill it: `docker kill solitune_doc`
 
 ## FastAPI and Uvicorn
-FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints.
+FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints. It cames with build-in swagger, which is perfect for testing. What is more kedro pipelines can be implementent into FastAPI app. That allows team to work more efficiently.  
 To run type:
 ```
 uvicorn scr/solitune/main:app --reload
