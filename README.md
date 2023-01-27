@@ -1,6 +1,6 @@
 # Solitune
-This app will predict employee future based on "Employee" dataset. 
-Example implementation can be found here: 
+This app is designed to use machine learning algorithms to classificate the future of employees, based on "Employee" dataset, predicting if they will stay or leave current working place. It does this by analyzing a dataset that contains information about the employees, such as their education, joining year, gender, payment tier and experience. The app is built using a combination of technologies, including the programming language Python, the data pipeline framework Kedro, and the containerization technology Docker. These technologies work together to allow for efficient data processing and model training, as well as easy deployment and scaling of the app. Overall, the app could help organizations make better decisions about employee management and development, by providing them with predictions about employee performance and behavior.
+Example implementation and dataset can be found here: 
 https://www.kaggle.com/datasets/tejashvi14/employee-future-prediction
 ## Team
 ***Bagniuk Karol*** - Data Scientist\
