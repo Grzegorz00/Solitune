@@ -22,6 +22,12 @@ https://www.kaggle.com/datasets/tejashvi14/employee-future-prediction
 
 [Docker](https://docs.docker.com/get-started/overview/)
 
+[Wandb](https://docs.wandb.ai/)
+
+[Optuna](https://optuna.readthedocs.io/en/stable/index.html)
+
+[PyCaret](https://pycaret.readthedocs.io/en/latest/index.html)
+
 [FastAPI](https://fastapi.tiangolo.com/)
 
 ## How to use DVC
