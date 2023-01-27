@@ -10,9 +10,9 @@ https://www.kaggle.com/datasets/tejashvi14/employee-future-prediction
 ***Święcicki Grzegorz*** - Coder and System Architect\
 ***Sadownik Michał*** - Coder and Data Scientist
 
-## Useful commends and links 
+## Useful links 
 
-[Data versioning](https://dvc.org/doc/start)
+[Data versioning(DVC)](https://dvc.org/doc/start)
 
 [kedro documentation](https://kedro.readthedocs.io)
 
