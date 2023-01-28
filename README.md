@@ -1,6 +1,7 @@
 # Solitune
-This app will predict employee future based on "Employee" dataset. 
-Example implementation can be found here: 
+This app is designed to use machine learning algorithms to classificate the future of employees, based on "Employee" dataset, predicting if they will stay or leave current working place. It does this by analyzing a dataset that contains information about the employees, such as their education, joining year, gender, payment tier and experience. The app is built using a combination of technologies, including the programming language Python, the data pipeline framework Kedro, and the containerization technology Docker. These technologies work together to allow for efficient data processing and model training, as well as easy deployment and scaling of the app. Overall, the app could help organizations make better decisions about employee management and development, by providing them with predictions about employee performance and behavior.
+
+Example implementation and dataset can be found here: 
 https://www.kaggle.com/datasets/tejashvi14/employee-future-prediction
 ## Team
 ***Bagniuk Karol*** - Data Scientist\
@@ -10,18 +11,25 @@ https://www.kaggle.com/datasets/tejashvi14/employee-future-prediction
 ***Święcicki Grzegorz*** - Coder and System Architect\
 ***Sadownik Michał*** - Coder and Data Scientist
 
-## Useful commends and links 
+## Useful links 
 
-[Data versioning](https://dvc.org/doc/start)
+[Data versioning(DVC)](https://dvc.org/doc/start)
 
 [kedro documentation](https://kedro.readthedocs.io)
 
 [Anaconda](https://anaconda.org/)
 
-To install package: `conda install --file requirements.txt -n some-environment`
-or: `pip install -r requirements.txt`
-
 [Git commends](https://docs.github.com/en/get-started/using-git/about-git)
+
+[Docker](https://docs.docker.com/get-started/overview/)
+
+[Wandb](https://docs.wandb.ai/)
+
+[Optuna](https://optuna.readthedocs.io/en/stable/index.html)
+
+[PyCaret](https://pycaret.readthedocs.io/en/latest/index.html)
+
+[FastAPI](https://fastapi.tiangolo.com/)
 
 ## How to use DVC
 
@@ -53,45 +61,41 @@ dvc pull
 
 ## Overview
 
-This is your new Kedro project, which was generated using `Kedro 0.18.3`.
-
-## Rules and guidelines
-
-In order to get the best out of the template:
-
-* Don't remove any lines from the `.gitignore` file we provide
-* Make sure your results can be reproduced by following a [data engineering convention](https://kedro.readthedocs.io/en/stable/faq/faq.html#what-is-data-engineering-convention)
-* Don't commit data to your repository
-* Don't commit any credentials or your local configuration to your repository. Keep all your credentials and local configuration in `conf/local/`
+This is a employee future prediction project based on "Employee" dataset. It was generated using Kedro, Docker and RestAPI. All the information about the data you can find in JupyterNotebook file in notebooks directory.
 
 ## How to install dependencies
 
-Declare any dependencies in `src/requirements.txt` for `pip` installation and `src/environment.yml` for `conda` installation.
+To install packages run: `conda install --file requirements.txt -n name-of-environment`
+or: `pip install -r requirements.txt`
 
-To install them, run:
-
-```
-pip install -r src/requirements.txt
-```
-
-## How to run your Kedro pipeline
-
+## Kedro
+Kedro is an open source Python workflow tool that allows you to create portable data science pipelines.
 You can run your Kedro project with:
 
 ```
 kedro run
 ```
-
-## How to test your Kedro project
-
-Have a look at the file `src/tests/test_run.py` for instructions on how to write your tests. You can run your tests as follows:
-
+All piplines are in src/solitune/pipelines/ directory.
+There are three ready piplines:
+- data_preparation
+- train
+- train_pycaret
+To run specific pipline, or choosen nodes use:
 ```
-kedro test
+kedro run --pipeline pipline_name
+kedro run --node node_name,node_name_2
 ```
 
-To configure the coverage threshold, go to the `.coveragerc` file.
+You can also see a project structure using:
+```
+kedro viz
+```
+This command automatically opens a browser tab to serve the visualisation at http://127.0.0.1:4141/.
 
+All documentation conected to kedro pipelines can be accessed by:
+```
+kedro build-docs --open
+```
 ## Project dependencies
 
 To generate or update the dependency requirements for your project:
@@ -104,67 +108,39 @@ This will `pip-compile` the contents of `src/requirements.txt` into a new file `
 
 After this, if you'd like to update your project requirements, please update `src/requirements.txt` and re-run `kedro build-reqs`.
 
-[Further information about project dependencies](https://kedro.readthedocs.io/en/stable/kedro_project_setup/dependencies.html#project-specific-dependencies)
+## WandadB, Optuna, Pycaret
+In this project, the Wandb, Optuna, and PyCaret libraries were used to optimize, evaluate, and deploy machine learning models.
 
-## How to work with Kedro and notebooks
+Wandb, or Weights and Biases, was used to track the performance of the models during training, as well as to store and visualize the results. This allowed the team to monitor the progress of the models in real-time and to quickly identify any issues or areas for improvement. Additionally, Wandb provides useful features such as hyperparameter tuning, and model comparison which can be useful in this project.
 
-> Note: Using `kedro jupyter` or `kedro ipython` to run your notebook provides these variables in scope: `context`, `catalog`, and `startup_error`.
->
-> Jupyter, JupyterLab, and IPython are already included in the project requirements by default, so once you have run `pip install -r src/requirements.txt` you will not need to take any extra steps before you use them.
+Optuna was used to perform hyperparameter optimization on the models. This is a technique that involves automatically searching for the best values for the parameters of the model, such as the learning rate or number of neurons in a neural network, in order to improve its performance. Optuna uses a variety of optimization algorithms and techniques to explore the parameter space and identify the best combination of values for the specific problem.
 
-### Jupyter
-To use Jupyter notebooks in your Kedro project, you need to install Jupyter:
+PyCaret was used to simplify the model selection and deployment process. PyCaret is a library that provides a high-level interface for several machine learning libraries, including scikit-learn, XGBoost, and LightGBM. It also provides a variety of useful features such as automated machine learning, model comparison and model interpretability. PyCaret allows the team to quickly test different models and select the best one for the task at hand, as well as to easily deploy the final model in a production environment.
 
+## Docker
+Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. It allows the team to work on the project on diffrent machines without a need to constantly fixing the environment. It also allows easly to test the app with wirtual environments.
+To run docker file type:
 ```
-pip install jupyter
+docker build -t solitune_doc
 ```
-
-After installing Jupyter, you can start a local notebook server:
-
+Then you can use `docker image` to check all docker images. To run image use:
 ```
-kedro jupyter notebook
+docker run solitune_doc
 ```
-
-### JupyterLab
-To use JupyterLab, you need to install it:
-
+Then you can call `docker ps -a` to all the running and exited containers. To access type:
 ```
-pip install jupyterlab
+docker exec -it solitune_doc bash
 ```
+You can stop the container using: `docker stop solitune_doc` or kill it: `docker kill solitune_doc`
 
-You can also start JupyterLab:
-
+## FastAPI and Uvicorn
+FastAPI is a modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints. It cames with build-in swagger, which is perfect for testing. What is more kedro pipelines can be implementent into FastAPI app. That allows team to work more efficiently.  
+To run type:
 ```
-kedro jupyter lab
+uvicorn scr/solitune/main:app --reload
 ```
+ Then you go and check an automatic interactive API documentation: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
-### IPython
-And if you want to run an IPython session:
-
-```
-kedro ipython
-```
-
-### How to convert notebook cells to nodes in a Kedro project
-You can move notebook code over into a Kedro project structure using a mixture of [cell tagging](https://jupyter-notebook.readthedocs.io/en/stable/changelog.html#release-5-0-0) and Kedro CLI commands.
-
-By adding the `node` tag to a cell and running the command below, the cell's source code will be copied over to a Python file within `src/<package_name>/nodes/`:
-
-```
-kedro jupyter convert <filepath_to_my_notebook>
-```
-> *Note:* The name of the Python file matches the name of the original notebook.
-
-Alternatively, you may want to transform all your notebooks in one go. Run the following command to convert all notebook files found in the project root directory and under any of its sub-folders:
-
-```
-kedro jupyter convert --all
-```
-
-### How to ignore notebook output cells in `git`
-To automatically strip out all output cell contents before committing to `git`, you can run `kedro activate-nbstripout`. This will add a hook in `.git/config` which will run `nbstripout` before anything is committed to `git`.
-
-> *Note:* Your output cells will be retained locally.
 
 ## Package your Kedro project
 
