@@ -4,3 +4,7 @@ from typing import Iterable
 
 def encode_categorical_pipeline() -> Iterable[Pipeline]:
     yield create_pipeline()
+
+def reorder_dataset_pipeline() -> Iterable[Pipeline]:
+    yield create_pipeline()
+    
